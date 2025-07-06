@@ -147,3 +147,23 @@ To add more restaurants:
 1. Run `knowledge_base_creation.py` with new restaurant URLs
 2. Re-run `preprocess_and_index.py` to update the knowledge base
 3. The chatbot will automatically incorporate the new information
+
+
+
+HTML (restaurant page)
+    ↓
+knowledge_base_creation.py
+    ↓
+Structured JSON chunks (dish/meta/features) → restaurant_data/
+    ↓
+preprocess_and_index.py
+    ↓
+Flattened text chunks → Embedded → Indexed (FAISS)
+    ↓
+User query
+    ↓
+retriever.py → retrieves top-k relevant chunks
+    ↓
+generator.py → uses chunks + query to generate answer
+    ↓
+main.py → shows final result to user
